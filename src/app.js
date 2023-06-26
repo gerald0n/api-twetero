@@ -16,52 +16,15 @@ const tweets = [
    {
       username: 'bobesponja',
       tweet: '1 Eu amo hambúrguer de siri!'
-   },
-   {
-      username: 'bobesponja',
-      tweet: '2 Eu amo hambúrguer de siri!'
-   },
-   {
-      username: 'bobesponja',
-      tweet: '3 Eu amo hambúrguer de siri!'
-   },
-   {
-      username: 'bobesponja',
-      tweet: '4 Eu amo hambúrguer de siri!'
-   },
-   {
-      username: 'bobesponja',
-      tweet: '5 Eu amo hambúrguer de siri!'
-   },
-   {
-      username: 'bobesponja',
-      tweet: '6 Eu amo hambúrguer de siri!'
-   },
-   {
-      username: 'bobesponja',
-      tweet: '7 Eu amo hambúrguer de siri!'
-   },
-   {
-      username: 'bobesponja',
-      tweet: '8 Eu amo hambúrguer de siri!'
-   },
-   {
-      username: 'bobesponja',
-      tweet: '9 Eu amo hambúrguer de siri!'
-   },
-   {
-      username: 'bobesponja',
-      tweet: '10 Eu amo hambúrguer de siri!'
-   },
-   {
-      username: 'bobesponja',
-      tweet: '11 Eu amo hambúrguer de siri!'
-   },
-   {
-      username: 'bobesponja',
-      tweet: '12 Eu amo hambúrguer de siri!'
    }
 ]
+
+app.post('/sign-up', (req, res) => {
+  const {username, avatar} = req.body;
+
+  users.push(username, avatar)
+  return res.status('201').json({message: 'OK'})
+})
 
 app.get('/tweets', (req, res) => {
    const posts = tweets.reverse().map((tweetPost) => {
