@@ -5,19 +5,8 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-const users = [
-   {
-      username: 'administrador',
-      avatar:
-         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpVb5-TSYr4QSGeWkoe1U1koXEdh2dZholCk5b8DTYFw&s'
-   }
-]
-const tweets = [
-   {
-      username: 'administrador',
-      tweet: 'Onde estiver, eu estarei lá.'
-   }
-]
+const users = []
+const tweets = []
 
 app.post('/sign-up', (req, res) => {
    const { username, avatar } = req.body
