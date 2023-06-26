@@ -7,23 +7,34 @@ app.use(express.json())
 
 const users = [
    {
-      username: 'bobesponja',
+      username: 'administrador',
       avatar:
-         'https://cdn.shopify.com/s/files/1/0150/0643/3380/files/Screen_Shot_2019-07-01_at_11.35.42_AM_370x230@2x.png'
+         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpVb5-TSYr4QSGeWkoe1U1koXEdh2dZholCk5b8DTYFw&s'
    }
 ]
 const tweets = [
    {
-      username: 'bobesponja',
-      tweet: '1 Eu amo hambúrguer de siri!'
+      username: 'administrador',
+      tweet: 'Onde estiver, eu estarei lá.'
    }
 ]
 
 app.post('/sign-up', (req, res) => {
-  const {username, avatar} = req.body;
+   const { username, avatar } = req.body
 
-  users.push(username, avatar)
-  return res.status('201').json({message: 'OK'})
+   users.push({ username, avatar })
+   res.status(201).json({ message: 'OK' })
+})
+
+app.post('/tweets', (req, res) => {
+   const { username, tweet } = req.body
+
+   if (!users.find((user) => user.username === username)) {
+      return res.status(401).json({ message: 'UNAUTHORIZED' })
+   }
+
+   tweets.push({ username, tweet })
+   res.status(201).json({ message: 'Ok' })
 })
 
 app.get('/tweets', (req, res) => {
